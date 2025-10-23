@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANAGRAFICA 1.1</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .container {
+            width: 70%; 
+            margin: 0 auto; 
+            text-align: left; 
+        }
+
+        .input-container {
+            width: 30%;
+            float: left;
+            margin-left: 5%;
+            margin-top: 10px;
+        }
+        .output-container {
+            width: 40%;
+            float: left;
+            margin-left: 5%;
+            margin-top: 70px;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 24px;
+        }
+
+        .start-container {
+            text-align: center;
+        }
+
+        h3 {
+            margin-bottom: 5px;
+        }
+
+        .input-container input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+
+        .output-container p {
+            padding: 8px;
+            background-color: #f4f4f4;
+            border: 1px solid #ccc;
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="start-container">
+        <h1>ANAGRAFICA UTENTI</h1>
+    </div>
+    <div class="container">
+        <h1>Informazioni:</h1>
+
+        <div class="input-container">
+            <h3>Nome:</h3>
+            <input type="text" id="inputnome" placeholder="inserisci nome...">
+        </div>
+        <div class="output-container">
+            <p id="nome" class="output"></p>
+        </div>
+
+        <div class="clear"></div>
+
+        <div class="input-container">
+            <h3>Cognome:</h3>
+            <input type="text" id="inputcognome" placeholder="inserisci cognome...">
+        </div>
+        <div class="output-container">
+            <p id="cognome" class="output"></p>
+        </div>
+
+        <div class="clear"></div>
+
+        <div class="input-container">
+            <h3>Indirizzo:</h3>
+            <input type="text" id="inputindirizzo" placeholder="inserisci indirizzo...">
+        </div>
+        <div class="output-container">
+            <p id="indirizzo" class="output"></p>
+        </div>
+
+        <div class="clear"></div>
+
+        <div class="input-container">
+            <h3>Città:</h3>
+            <input type="text" id="inputcittà" placeholder="inserisci città...">
+        </div>
+        <div class="output-container">
+            <p id="città" class="output"></p>
+        </div>
+
+        <div class="clear"></div>
+
+        <div class="input-container">
+            <h3>CAP:</h3>
+            <input type="text" id="inputcap" placeholder="inserisci cap...">
+        </div>
+        <div class="output-container">
+            <p id="cap" class="output"></p>
+        </div>
+
+        <div class="clear"></div>
+
+        <div class="input-container">
+            <h3>Anno di nascita:</h3>
+            <input type="text" id="inputnascita" placeholder="inserisci anno di nascita...">
+        </div>
+        <div class="output-container">
+            <p id="nascita" class="output"></p>
+        </div>
+
+        <div class="clear"></div>
+
+        <input id="colore" type="button" value="verifica" onclick="stampa()">
+    </div>
+
+    <script>
+        function stampa() {
+            var print = document.getElementById("inputnome").value;
+            document.getElementById("nome").innerHTML = print;
+
+            print = document.getElementById("inputcognome").value;
+            document.getElementById("cognome").innerHTML = print;
+
+            print = document.getElementById("inputindirizzo").value;
+            document.getElementById("indirizzo").innerHTML = print;
+
+            print = document.getElementById("inputcittà").value;
+            document.getElementById("città").innerHTML = print;
+
+            print = document.getElementById("inputcap").value;
+            document.getElementById("cap").innerHTML = print;
+
+            print = document.getElementById("inputnascita").value;
+            document.getElementById("nascita").innerHTML = print;
+        }
+    </script>
+</body>
+</html>
