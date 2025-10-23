@@ -1,151 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ANAGRAFICA 1.1</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        .container {
-            width: 70%; 
-            margin: 0 auto; 
-            text-align: left; 
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ANAGRAFICA 1.1</title>
 
-        .input-container {
-            width: 30%;
-            float: left;
-            margin-left: 5%;
-            margin-top: 10px;
-        }
-        .output-container {
-            width: 40%;
-            float: left;
-            margin-left: 5%;
-            margin-top: 70px;
-        }
+  <!-- Bootstrap 4 -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-        .clear {
-            clear: both;
-        }
+  <style>
+    body {
+      background-color: #eef2f7;
+      font-family:Verdana, sans-serif;
+    }
 
-        h1 {
-            text-align: center;
-            font-size: 24px;
-        }
+    .container {
+      width: 70%;
+      margin: 40px auto;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 1, 0.5);
+      padding: 40px 50px;
+    }
 
-        .start-container {
-            text-align: center;
-        }
+    h1 {
+      text-align: center;
+      color: #007bff;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-bottom: 40px;
+    }
 
-        h3 {
-            margin-bottom: 5px;
-        }
+    h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 6px;
+    }
 
-        .input-container input {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
-        }
+    .input-container,
+    .output-container {
+      margin-bottom: 20px;
+    }
 
-        .output-container p {
-            padding: 8px;
-            background-color: #f4f4f4;
-            border: 1px solid #ccc;
-            margin-top: 0;
-        }
-    </style>
+    .input-container input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    .input-container input: {
+      border-color: #007bff;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+      outline: none;
+    }
+
+    .output-container p {
+      width: 100%;
+      padding: 10px;
+      background-color: #f9fafc;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 14px;
+      color: #444;
+      height: auto;
+      margin: 5px 0;
+      min-height: 38px;
+      display: flex;
+      align-items: center;
+    }
+
+    #generazione {
+      font-weight: bold;
+      color: #0066cc;
+    }
+
+    button#colore {
+      background-color: #007bff;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 30px;
+      font-size: 16px;
+    }
+
+    button#colore:hover {
+      background-color: #0056b3;
+    }
+
+    .text-center {
+      margin-top: 40px;
+    }
+
+    .output-container {
+      border-left: 3px solid #007bff33;
+      padding-left: 20px;
+    }
+  </style>
 </head>
-<body>
-    <div class="start-container">
-        <h1>ANAGRAFICA UTENTI</h1>
+
+<body class="bg-light">
+  <div class="start-container mt-4">
+    <h1 class="text-primary">ANAGRAFICA UTENTI</h1>
+  </div>
+
+  <div class="container">
+    <h1 class="mb-4">Informazioni:</h1>
+
+    <div class="input-container">
+      <h3>Nome:</h3>
+      <input type="text" id="inputnome" class="form-control" placeholder="inserisci nome...">
     </div>
-    <div class="container">
-        <h1>Informazioni:</h1>
-
-        <div class="input-container">
-            <h3>Nome:</h3>
-            <input type="text" id="inputnome" placeholder="inserisci nome...">
-        </div>
-        <div class="output-container">
-            <p id="nome" class="output"></p>
-        </div>
-
-        <div class="clear"></div>
-
-        <div class="input-container">
-            <h3>Cognome:</h3>
-            <input type="text" id="inputcognome" placeholder="inserisci cognome...">
-        </div>
-        <div class="output-container">
-            <p id="cognome" class="output"></p>
-        </div>
-
-        <div class="clear"></div>
-
-        <div class="input-container">
-            <h3>Indirizzo:</h3>
-            <input type="text" id="inputindirizzo" placeholder="inserisci indirizzo...">
-        </div>
-        <div class="output-container">
-            <p id="indirizzo" class="output"></p>
-        </div>
-
-        <div class="clear"></div>
-
-        <div class="input-container">
-            <h3>Città:</h3>
-            <input type="text" id="inputcittà" placeholder="inserisci città...">
-        </div>
-        <div class="output-container">
-            <p id="città" class="output"></p>
-        </div>
-
-        <div class="clear"></div>
-
-        <div class="input-container">
-            <h3>CAP:</h3>
-            <input type="text" id="inputcap" placeholder="inserisci cap...">
-        </div>
-        <div class="output-container">
-            <p id="cap" class="output"></p>
-        </div>
-
-        <div class="clear"></div>
-
-        <div class="input-container">
-            <h3>Anno di nascita:</h3>
-            <input type="text" id="inputnascita" placeholder="inserisci anno di nascita...">
-        </div>
-        <div class="output-container">
-            <p id="nascita" class="output"></p>
-        </div>
-
-        <div class="clear"></div>
-
-        <input id="colore" type="button" value="verifica" onclick="stampa()">
+    <div class="output-container">
+      <p id="nome" class="output"></p>
     </div>
 
-    <script>
-        function stampa() {
-            var print = document.getElementById("inputnome").value;
-            document.getElementById("nome").innerHTML = print;
+    <div class="input-container">
+      <h3>Cognome:</h3>
+      <input type="text" id="inputcognome" class="form-control" placeholder="inserisci cognome...">
+    </div>
+    <div class="output-container">
+      <p id="cognome" class="output"></p>
+    </div>
 
-            print = document.getElementById("inputcognome").value;
-            document.getElementById("cognome").innerHTML = print;
+    <div class="input-container">
+      <h3>Indirizzo:</h3>
+      <input type="text" id="inputindirizzo" class="form-control" placeholder="inserisci indirizzo...">
+    </div>
+    <div class="output-container">
+      <p id="indirizzo" class="output"></p>
+    </div>
 
-            print = document.getElementById("inputindirizzo").value;
-            document.getElementById("indirizzo").innerHTML = print;
+    <div class="input-container">
+      <h3>Città:</h3>
+      <input type="text" id="inputcittà" class="form-control" placeholder="inserisci città...">
+    </div>
+    <div class="output-container">
+      <p id="città" class="output"></p>
+    </div>
 
-            print = document.getElementById("inputcittà").value;
-            document.getElementById("città").innerHTML = print;
+    <div class="input-container">
+      <h3>CAP:</h3>
+      <input type="text" id="inputcap" class="form-control" placeholder="inserisci cap...">
+    </div>
+    <div class="output-container">
+      <p id="cap" class="output"></p>
+    </div>
 
-            print = document.getElementById("inputcap").value;
-            document.getElementById("cap").innerHTML = print;
+    <div class="input-container">
+      <h3>Anno di nascita:</h3>
+      <input type="number" id="inputnascita" class="form-control" placeholder="inserisci anno di nascita...">
+    </div>
+    <div class="output-container">
+      <p id="nascita" class="output"></p>
+      <p id="eta" class="output"></p>
+      <p id="generazione" class="output"></p>
+    </div>
 
-            print = document.getElementById("inputnascita").value;
-            document.getElementById("nascita").innerHTML = print;
-        }
-    </script>
+    <div class="text-center">
+      <button id="colore" class="btn btn-primary btn-lg" onclick="stampa()">Verifica</button>
+    </div>
+  </div>
+
+  <script>
+    function stampa() {
+      var nome = document.getElementById("inputnome").value;
+      var cognome = document.getElementById("inputcognome").value;
+      var indirizzo = document.getElementById("inputindirizzo").value;
+      var città = document.getElementById("inputcittà").value;
+      var cap = document.getElementById("inputcap").value;
+      var nascita = parseInt(document.getElementById("inputnascita").value);
+
+      document.getElementById("nome").innerHTML = "Nome: " + nome;
+      document.getElementById("cognome").innerHTML = "Cognome: " + cognome;
+      document.getElementById("indirizzo").innerHTML = "Indirizzo: " + indirizzo;
+      document.getElementById("città").innerHTML = "Città: " + città;
+      document.getElementById("cap").innerHTML = "CAP: " + cap;
+      document.getElementById("nascita").innerHTML = "Anno di nascita: " + nascita;
+
+      var annoCorrente = new Date().getFullYear();
+      var eta = annoCorrente - nascita;
+      document.getElementById("eta").innerHTML = "Età: " + eta + " anni";
+
+      var generazione = "";
+      if (nascita >= 1901 && nascita <= 1927) generazione = "Greatest Generation";
+      else if (nascita >= 1928 && nascita <= 1945) generazione = "Generazione Silenziosa";
+      else if (nascita >= 1946 && nascita <= 1964) generazione = "Baby Boomers";
+      else if (nascita >= 1965 && nascita <= 1980) generazione = "Generazione X";
+      else if (nascita >= 1981 && nascita <= 1996) generazione = "Millennials";
+      else if (nascita >= 1997 && nascita <= 2012) generazione = "Generazione Z";
+      else if (nascita >= 2013) generazione = "Generazione Alpha";
+      else generazione = "Dato non valido o troppo antico.";
+
+      document.getElementById("generazione").innerHTML = "Appartieni alla: " + generazione;
+    }
+  </script>
+
 </body>
 </html>
