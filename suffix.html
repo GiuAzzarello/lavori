@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Subnet Mask Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #eef3ff;
+      text-align: center;
+      padding: 40px;
+    }
+    .box {
+      background: white;
+      display: inline-block;
+      padding: 20px 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input, button {
+      margin: 10px;
+      padding: 8px;
+      font-size: 15px;
+    }
+    .output {
+      margin-top: 15px;
+      text-align: left;
+    }
+    .error { color: red; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h3>Generatore Subnet Mask</h3>
+    <label>Prefix (0–32):</label><br>
+    <input type="text" id="prefix" oninput="this.value=this.value.replace(/[^0-9]/g,'')">
+    <button onclick="genera()">Genera</button>
+
+    <div class="output">
+      <p><b>Subnet mask:</b> <span id="mask"></span></p>
+      <p><b>Suffix:</b> <span id="suffix"></span></p>
+      <p><b>Host disponibili:</b> <span id="hosts"></span></p>
+    </div>
+  </div>
+
+  <script>
+    function genera() {
+      const p = parseInt(document.getElementById("prefix").value);
+      const mask = document.getElementById("mask");
+      const suffix = document.getElementById("suffix");
+      const hosts = document.getElementById("hosts");
+
+      if (isNaN(p) || p < 0 || p > 32) {
+        mask.innerHTML = '<span class="error">Errore: inserisci un numero tra 0 e 32!</span>';
+        suffix.textContent = "";
+        hosts.textContent = "";
+        return;
+      }
+
+      const full = Math.floor(p / 8);
+      const rem = p % 8;
+      let bin = [];
+
+      for (let i = 0; i < full; i++) bin.push("11111111");
+      if (rem > 0) bin.push("1".repeat(rem).padEnd(8, "0"));
+      while (bin.length < 4) bin.push("00000000");
+
+      mask.textContent = bin.join(".");
+      const s = 32 - p;
+      suffix.textContent = s;
+      hosts.innerHTML = `2<sup>${s}</sup> - 2 = ${Math.pow(2, s) - 2}`;
+    }
+  </script>
+</body>
+</html>
