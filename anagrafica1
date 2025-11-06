@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+ <head>
+
+  <script>
+   function stampa() {
+    var printn=document.getElementById("Nome").value
+    document.getElementById("destn").innerHTML=printn
+   }
+   function stampa() {
+    var printc=document.getElementById("cognome").value
+    document.getElementById("destc").innerHTML=printc
+   }
+   function stampa() {
+    var printi=document.getElementById("indirizzo").value
+    document.getElementById("desti").innerHTML=printi
+   }
+  </script>
+  
+ </head>
+ <body>
+
+  <input type="text"id="nome">
+  <p id="destn"></p>
+  <input type="text"id="cognome">
+  <p id="destc"></p>
+  <input type="text"id="indirizzo">
+  <p id="desti"></p>
+  <input type="button"value="OK" onclick="stampa()">
+ </body>
+
+</html>
