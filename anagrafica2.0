@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ANAGRAFICA 1.2</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <style>
+    body {
+      background-color: #eef2f7;
+      font-family:Verdana, sans-serif;
+    }
+    .container {
+      width: 70%;
+      margin: 40px auto;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 1, 0.5);
+      padding: 40px 50px;
+    }
+    h1 {
+      text-align: center;
+      color: #007bff;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-bottom: 40px;
+    }
+    h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 6px;
+    }
+    .output-container p {
+      background-color: #f9fafc;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 8px;
+      margin: 3px 0;
+    }
+  </style>
+</head>
+
+<body class="bg-light">
+
+  <h1 class="text-primary mt-4">ANAGRAFICA UTENTI</h1>
+
+  <div class="container">
+    <h1 class="mb-4">Informazioni:</h1>
+
+    <div class="input-container">
+      <h3>Nome:</h3>
+      <input type="text" id="inputnome" class="form-control">
+    </div>
+    <div class="output-container">
+      <p id="nome"></p>
+    </div>
+
+    <div class="input-container">
+      <h3>Cognome:</h3>
+      <input type="text" id="inputcognome" class="form-control">
+    </div>
+    <div class="output-container">
+      <p id="cognome"></p>
+    </div>
+
+    <div class="input-container">
+      <h3>Indirizzo:</h3>
+      <input type="text" id="inputindirizzo" class="form-control">
+    </div>
+    <div class="output-container">
+      <p id="indirizzo"></p>
+    </div>
+
+    <div class="input-container">
+      <h3>Città:</h3>
+      <input type="text" id="inputcitta" class="form-control">
+    </div>
+    <div class="output-container">
+      <p id="citta"></p>
+    </div>
+
+    <div class="input-container">
+      <h3>Provincia:</h3>
+      <select id="inputprovincia" class="form-control">
+        <option value=""></option>
+        <option>MI</option>
+        <option>RM</option>
+        <option>TO</option>
+        <option>FI</option>
+        <option>NA</option>
+      </select>
+    </div>
+    <div class="output-container">
+      <p id="provincia"></p>
+    </div>
+
+    <div class="input-container">
+      <h3>CAP:</h3>
+      <input type="text" id="inputcap" class="form-control">
+    </div>
+    <div class="output-container">
+      <p id="cap"></p>
+    </div>
+
+    <div class="input-container">
+      <h3>Sesso:</h3>
+      <input type="radio" name="sesso" value="Maschio"> Maschio<br>
+      <input type="radio" name="sesso" value="Femmina"> Femmina<br>
+      <input type="radio" name="sesso" value="Altro"> Altro
+    </div>
+    <div class="output-container">
+      <p id="sesso"></p>
+    </div>
+
+    <div class="input-container">
+      <h3>Veicoli posseduti:</h3>
+      <input type="checkbox" value="Auto" class="veicoli"> Auto<br>
+      <input type="checkbox" value="Moto" class="veicoli"> Moto<br>
+      <input type="checkbox" value="Bicicletta" class="veicoli"> Bicicletta<br>
+      <input type="checkbox" value="Monopattino" class="veicoli"> Monopattino
+    </div>
+    <div class="output-container">
+      <p id="veicoli"></p>
+    </div>
+
+    <div class="input-container">
+      <h3>Sport praticati:</h3>
+      <input type="checkbox" class="sport" value="Calcio"> Calcio<br>
+      <input type="checkbox" class="sport" value="Basket"> Basket<br>
+      <input type="checkbox" class="sport" value="Tennis"> Tennis<br>
+      <input type="checkbox" class="sport" value="Pallavolo"> Pallavolo<br>
+      <input type="checkbox" class="sport" value="Biliardo"> Biliardo
+    </div>
+    <div class="output-container">
+      <p id="sport"></p>
+    </div>
+
+    <div class="input-container">
+      <h3>Anno di nascita:</h3>
+      <input type="number" id="inputnascita" class="form-control">
+    </div>
+    <div class="output-container">
+      <p id="nascita"></p>
+      <p id="eta"></p>
+      <p id="generazione"></p>
+    </div>
+
+    <div class="text-center mt-4">
+      <button class="btn btn-primary btn-lg" onclick="stampa()">Verifica</button>
+    </div>
+  </div>
+
+  <script>
+    function stampa() {
+      var nome = document.getElementById("inputnome").value;
+      var cognome = document.getElementById("inputcognome").value;
+      var indirizzo = document.getElementById("inputindirizzo").value;
+      var citta = document.getElementById("inputcitta").value;
+      var provincia = document.getElementById("inputprovincia").value;
+      var cap = document.getElementById("inputcap").value;
+      var nascita = parseInt(document.getElementById("inputnascita").value);
+
+      document.getElementById("nome").innerHTML = nome;
+      document.getElementById("cognome").innerHTML = cognome;
+      document.getElementById("indirizzo").innerHTML = indirizzo;
+      document.getElementById("citta").innerHTML = citta;
+      document.getElementById("provincia").innerHTML = provincia;
+      document.getElementById("cap").innerHTML = cap;
+
+      var sessoSelezionato = document.querySelector("input[name='sesso']:checked");
+      document.getElementById("sesso").innerHTML = (sessoSelezionato ? sessoSelezionato.value : "");
+
+      var veicoli = document.querySelectorAll(".veicoli:checked");
+      var listaVeicoli = [];
+      veicoli.forEach(v => listaVeicoli.push(v.value));
+      document.getElementById("veicoli").innerHTML = (listaVeicoli.length ? listaVeicoli.join(", ") : "");
+
+      var sport = document.querySelectorAll(".sport:checked");
+      var listaSport = [];
+      sport.forEach(s => listaSport.push(s.value));
+      document.getElementById("sport").innerHTML = (listaSport.length ? listaSport.join(", ") : "");
+
+      var annoCorrente = new Date().getFullYear();
+      var eta = annoCorrente - nascita;
+      document.getElementById("nascita").innerHTML = nascita;
+      document.getElementById("eta").innerHTML = eta + " anni";
+
+      var generazione = "";
+      if (nascita >= 1901 && nascita <= 1927) generazione = "Greatest Generation";
+      else if (nascita >= 1928 && nascita <= 1945) generazione = "Generazione Silenziosa";
+      else if (nascita >= 1946 && nascita <= 1964) generazione = "Baby Boomers";
+      else if (nascita >= 1965 && nascita <= 1980) generazione = "Generazione X";
+      else if (nascita >= 1981 && nascita <= 1996) generazione = "Millennials";
+      else if (nascita >= 1997 && nascita <= 2012) generazione = "Gen Z";
+      else if (nascita >= 2013) generazione = "Gen Alpha";
+      else generazione = "";
+
+      document.getElementById("generazione").innerHTML = generazione;
+    }
+  </script>
+
+</body>
+</html>
