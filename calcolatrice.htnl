@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <Title>"Calcolatrice"</Title>
+        <style>
+    body {
+        display: flex;
+        flex-direction:column;
+        height:100vh;
+        justify-content:center;
+        align-items:center;
+
+    }
+    #Calcolatrice {
+        display:grid;
+        grid-template-columns:repeat(4,1fr);
+        gap:5px;
+        width: 50vw;
+        padding: 5px;
+        background-color: lightblue;        
+        justify-content: center;
+        border-radius: 5px;
+    }
+    .pulsante {
+        display: grid;
+        justify-items: center;
+        width: 10vh;
+        height: 10vh;
+        background-color: blue;
+        align-items: center;
+        font-weight: bold;
+
+    }
+    .pulsante:hover {
+        background-color: rgb(42, 42, 239);
+        cursor: pointer;
+    }
+    .operatore {
+        background-color: rgb(6, 6, 199);
+    }
+    .operatore:hover {
+        background-color: rgb(5, 5, 134);
+    }
+    #schermo {
+        width: 50vw;
+        height: 10vh;
+        font-size: 5vh;
+        text-align: right;
+        margin-bottom: 10px;
+    }
+</style>
+    <body>
+    <input type="text" id="schermo" disabled/>
+    <div id="Calcolatrice">
+        <div class="pulsante operatore" onclick="aggiungi('sin')">sin</div>
+        <div class="pulsante operatore" onclick="aggiungi('cos')">cos</div>
+        <div class="pulsante operatore" onclick="aggiungi('tan')">tan</div>
+        <div class="pulsante operatore" onclick="aggiungi('^')">^</div>
+        <div class="pulsante" onclick="aggiungi('1')">1</div>
+        <div class="pulsante" onclick="aggiungi('2')">2</div>
+        <div class="pulsante" onclick="aggiungi('3')">3</div>
+        <div class="pulsante operatore" onclick="aggiungi('%')">%</div>
+        <div class="pulsante" onclick="aggiungi('4')">4</div>
+        <div class="pulsante" onclick="aggiungi('5')">5</div>
+        <div class="pulsante" onclick="aggiungi('6')">6</div>
+        <div class="pulsante operatore" onclick="aggiungi('+')">+</div>
+        <div class="pulsante" onclick="aggiungi('7')">7</div>
+        <div class="pulsante" onclick="aggiungi('8')">8</div>
+        <div class="pulsante" onclick="aggiungi('9')">9</div>
+        <div class="pulsante operatore" onclick="aggiungi('-')">-</div>
+        <div class="pulsante" onclick="aggiungi('0')">0</div>
+        <div class="pulsante" onclick="aggiungi('.')">.</div>
+        <div class="pulsante" onclick="cancella()">c</div>
+        <div class="pulsante operatore" onclick="aggiungi('*')">*</div>
+        <div class="pulsante operatore" onclick="aggiungi('/')">/</div>
+        <div class="pulsante operatore" onclick="aggiungi('√')">√</div>
+        <div class="pulsante">=</div>
+
+    
+    </div>
+    <script>
+        var schermo = document.getElementById("schermo");
+
+        function aggiungi(s) {
+            schermo.value += s;
+        }
+
+        function cancella() {
+            schermo.value = "";
+        }
+    </script>
+    </body>
+</html>
