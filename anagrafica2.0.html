@@ -1,206 +1,177 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ANAGRAFICA 1.2</title>
-
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
   <style>
     body {
-      background-color: #eef2f7;
-      font-family:Verdana, sans-serif;
+      font-family: Arial, sans-serif;
+      background-color: #3a5fcd;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+      color: #ffffff;
     }
-    .container {
-      width: 70%;
-      margin: 40px auto;
-      background: #ffffff;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0, 0, 1, 0.5);
-      padding: 40px 50px;
-    }
-    h1 {
+
+    h2 {
+      color: #dddddd;
       text-align: center;
-      color: #007bff;
-      font-weight: 600;
-      letter-spacing: 1px;
-      margin-bottom: 40px;
+      margin-bottom: 20px;
     }
-    h3 {
+
+    .box {
+      background-color: #1e90ff;
+      padding: 25px;
+      border-radius: 4px;
+      width: 500px;
+      text-align: left;
+      border: 1px solid #104e8b; 
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      color: #ffffff; 
+    }
+
+    input[type="text"], select {
+      width: 92%;
+      padding: 6px;
+      margin: 8px 0;
+      border: 1px solid #666666;
+      border-radius: 3px;
+      background-color: #cfcfcf;
+      color: #222222;
+      font-size: 14px;
+    }
+
+    input[type="radio"], input[type="checkbox"] {
+      accent-color: #444444;
+      margin-right: 5px;
+    }
+
+    input[type="button"] {
+      background-color: #555555;
+      color: #ffffff;
+      border: none;
+      padding: 9px 18px;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 14px;
+      margin-top: 12px;
+    }
+
+    input[type="button"]:hover {
+      background-color: #777777;
+    }
+
+    #output {
+      margin-top: 20px;
       font-size: 16px;
-      font-weight: 600;
-      color: #333;
-      margin-bottom: 6px;
+      color: #222222;
+      background-color: #d9d9d9;
+      padding: 12px;
+      border-radius: 4px;
+      width: 500px;
+      border: 1px solid #b2b2b2;
     }
-    .output-container p {
-      background-color: #f9fafc;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      padding: 8px;
-      margin: 3px 0;
+
+    b {
+      color: #333333;
     }
   </style>
-</head>
-
-<body class="bg-light">
-
-  <h1 class="text-primary mt-4">ANAGRAFICA UTENTI</h1>
-
-  <div class="container">
-    <h1 class="mb-4">Informazioni:</h1>
-
-    <div class="input-container">
-      <h3>Nome:</h3>
-      <input type="text" id="inputnome" class="form-control">
-    </div>
-    <div class="output-container">
-      <p id="nome"></p>
-    </div>
-
-    <div class="input-container">
-      <h3>Cognome:</h3>
-      <input type="text" id="inputcognome" class="form-control">
-    </div>
-    <div class="output-container">
-      <p id="cognome"></p>
-    </div>
-
-    <div class="input-container">
-      <h3>Indirizzo:</h3>
-      <input type="text" id="inputindirizzo" class="form-control">
-    </div>
-    <div class="output-container">
-      <p id="indirizzo"></p>
-    </div>
-
-    <div class="input-container">
-      <h3>Città:</h3>
-      <input type="text" id="inputcitta" class="form-control">
-    </div>
-    <div class="output-container">
-      <p id="citta"></p>
-    </div>
-
-    <div class="input-container">
-      <h3>Provincia:</h3>
-      <select id="inputprovincia" class="form-control">
-        <option value=""></option>
-        <option>MI</option>
-        <option>RM</option>
-        <option>TO</option>
-        <option>FI</option>
-        <option>NA</option>
-      </select>
-    </div>
-    <div class="output-container">
-      <p id="provincia"></p>
-    </div>
-
-    <div class="input-container">
-      <h3>CAP:</h3>
-      <input type="text" id="inputcap" class="form-control">
-    </div>
-    <div class="output-container">
-      <p id="cap"></p>
-    </div>
-
-    <div class="input-container">
-      <h3>Sesso:</h3>
-      <input type="radio" name="sesso" value="Maschio"> Maschio<br>
-      <input type="radio" name="sesso" value="Femmina"> Femmina<br>
-      <input type="radio" name="sesso" value="Altro"> Altro
-    </div>
-    <div class="output-container">
-      <p id="sesso"></p>
-    </div>
-
-    <div class="input-container">
-      <h3>Veicoli posseduti:</h3>
-      <input type="checkbox" value="Auto" class="veicoli"> Auto<br>
-      <input type="checkbox" value="Moto" class="veicoli"> Moto<br>
-      <input type="checkbox" value="Bicicletta" class="veicoli"> Bicicletta<br>
-      <input type="checkbox" value="Monopattino" class="veicoli"> Monopattino
-    </div>
-    <div class="output-container">
-      <p id="veicoli"></p>
-    </div>
-
-    <div class="input-container">
-      <h3>Sport praticati:</h3>
-      <input type="checkbox" class="sport" value="Calcio"> Calcio<br>
-      <input type="checkbox" class="sport" value="Basket"> Basket<br>
-      <input type="checkbox" class="sport" value="Tennis"> Tennis<br>
-      <input type="checkbox" class="sport" value="Pallavolo"> Pallavolo<br>
-      <input type="checkbox" class="sport" value="Biliardo"> Biliardo
-    </div>
-    <div class="output-container">
-      <p id="sport"></p>
-    </div>
-
-    <div class="input-container">
-      <h3>Anno di nascita:</h3>
-      <input type="number" id="inputnascita" class="form-control">
-    </div>
-    <div class="output-container">
-      <p id="nascita"></p>
-      <p id="eta"></p>
-      <p id="generazione"></p>
-    </div>
-
-    <div class="text-center mt-4">
-      <button class="btn btn-primary btn-lg" onclick="stampa()">Verifica</button>
-    </div>
-  </div>
 
   <script>
     function stampa() {
-      var nome = document.getElementById("inputnome").value;
-      var cognome = document.getElementById("inputcognome").value;
-      var indirizzo = document.getElementById("inputindirizzo").value;
-      var citta = document.getElementById("inputcitta").value;
-      var provincia = document.getElementById("inputprovincia").value;
-      var cap = document.getElementById("inputcap").value;
-      var nascita = parseInt(document.getElementById("inputnascita").value);
+      var nome = document.getElementById("nome").value;
+      var cognome = document.getElementById("cognome").value;
+      var indirizzo = document.getElementById("indirizzo").value;
 
-      document.getElementById("nome").innerHTML = nome;
-      document.getElementById("cognome").innerHTML = cognome;
-      document.getElementById("indirizzo").innerHTML = indirizzo;
-      document.getElementById("citta").innerHTML = citta;
-      document.getElementById("provincia").innerHTML = provincia;
-      document.getElementById("cap").innerHTML = cap;
+      var sesso = "Non specificato";
+      var radios = document.getElementsByName("sesso");
+      for (var i = 0; i < radios.length; i++) {
+        if (radios[i].checked) {
+          sesso = radios[i].value;
+        }
+      }
 
-      var sessoSelezionato = document.querySelector("input[name='sesso']:checked");
-      document.getElementById("sesso").innerHTML = (sessoSelezionato ? sessoSelezionato.value : "");
+      var veicoli = document.getElementsByName("veicolo");
+      var listaVeicoli = "";
+      for (var i = 0; i < veicoli.length; i++) {
+        if (veicoli[i].checked) {
+          listaVeicoli += veicoli[i].value + " ";
+        }
+      }
+      if (listaVeicoli == "") {listaVeicoli = "Nessuno"};
 
-      var veicoli = document.querySelectorAll(".veicoli:checked");
-      var listaVeicoli = [];
-      veicoli.forEach(v => listaVeicoli.push(v.value));
-      document.getElementById("veicoli").innerHTML = (listaVeicoli.length ? listaVeicoli.join(", ") : "");
+      var provincia = document.getElementById("provincia").value;
 
-      var sport = document.querySelectorAll(".sport:checked");
-      var listaSport = [];
-      sport.forEach(s => listaSport.push(s.value));
-      document.getElementById("sport").innerHTML = (listaSport.length ? listaSport.join(", ") : "");
+      var sport = document.getElementsByName("sport");
+      var listaSport = "";
+      for (var i = 0; i < sport.length; i++) {
+        if (sport[i].checked) {
+          listaSport += sport[i].value + " ";
+        }
+      }
+      if (listaSport == "") {listaSport = "Nessuno"};
 
-      var annoCorrente = new Date().getFullYear();
-      var eta = annoCorrente - nascita;
-      document.getElementById("nascita").innerHTML = nascita;
-      document.getElementById("eta").innerHTML = eta + " anni";
-
-      var generazione = "";
-      if (nascita >= 1901 && nascita <= 1927) generazione = "Greatest Generation";
-      else if (nascita >= 1928 && nascita <= 1945) generazione = "Generazione Silenziosa";
-      else if (nascita >= 1946 && nascita <= 1964) generazione = "Baby Boomers";
-      else if (nascita >= 1965 && nascita <= 1980) generazione = "Generazione X";
-      else if (nascita >= 1981 && nascita <= 1996) generazione = "Millennials";
-      else if (nascita >= 1997 && nascita <= 2012) generazione = "Gen Z";
-      else if (nascita >= 2013) generazione = "Gen Alpha";
-      else generazione = "";
-
-      document.getElementById("generazione").innerHTML = generazione;
+      document.getElementById("output").innerHTML =
+        "<h3>Dati inseriti:</h3>" +
+        "<p><b>Nome:</b> " + nome + "</p>" +
+        "<p><b>Cognome:</b> " + cognome + "</p>" +
+        "<p><b>Indirizzo:</b> " + indirizzo + "</p>" +
+        "<p><b>Sesso:</b> " + sesso + "</p>" +
+        "<p><b>Veicolo posseduto:</b> " + listaVeicoli + "</p>" +
+        "<p><b>Provincia:</b> " + provincia + "</p>" +
+        "<p><b>Sport praticati:</b> " + listaSport + "</p>";
     }
   </script>
+</head>
+
+<body>
+
+  <div class="box">
+    <h2>Modulo dati personali</h2>
+
+    <b>Nome:</b><br>
+    <input type="text" id="nome">
+
+    <b>Cognome:</b><br>
+    <input type="text" id="cognome">
+
+    <b>Indirizzo:</b><br>
+    <input type="text" id="indirizzo">
+
+    <b>Sesso:</b><br>
+    <input type="radio" name="sesso" value="Maschio"> Maschio<br>
+    <input type="radio" name="sesso" value="Femmina"> Femmina<br>
+    <input type="radio" name="sesso" value="Altro"> Altro<br><br>
+
+    <b>Veicoli posseduti:</b><br>
+    <input type="checkbox" name="veicolo" value="Auto"> Auto<br>
+    <input type="checkbox" name="veicolo" value="Moto"> Moto<br>
+    <input type="checkbox" name="veicolo" value="Bicicletta"> Bicicletta<br>
+    <input type="checkbox" name="veicolo" value="Monopattino"> Monopattino<br>
+    <input type="checkbox" name="veicolo" value="Scooter"> Scooter<br>
+    <input type="checkbox" name="veicolo" value="Barca"> Barca<br><br>
+
+    <b>Provincia:</b><br>
+    <select id="provincia">
+      <option value="MI">Milano</option>
+      <option value="LC">Lecco</option>
+      <option value="CO">Como</option>
+      <option value="LO">Lodi</option>
+      <option value="BS">Brescia</option>
+    </select><br><br>
+
+    <b>Sport praticati:</b><br>
+    <input type="checkbox" name="sport" value="Calcio"> Calcio<br>
+    <input type="checkbox" name="sport" value="Basket"> Basket<br>
+    <input type="checkbox" name="sport" value="Pallavolo"> Pallavolo<br>
+    <input type="checkbox" name="sport" value="Tennis"> Tennis<br>
+    <input type="checkbox" name="sport" value="Biliardo"> Biliardo<br>
+    <input type="checkbox" name="sport" value="Atletica"> Atletica<br>
+    <input type="checkbox" name="sport" value="Rugby"> Rugby<br><br>
+
+    <input type="button" value="OK" onclick="stampa()">
+  </div>
+
+  <div id="output"></div>
 
 </body>
 </html>
