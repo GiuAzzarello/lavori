@@ -4,23 +4,57 @@
     <meta charset="UTF-8">
     <title>Calcolatrice</title>
     <style>
-        body {
-            font-family: Arial;
-            text-align: center;
-        }
-        input {
-            width: 200px;
-            height: 30px;
-            font-size: 18px;
-            text-align: right;
-        }
-        button {
-            width: 45px;
-            height: 40px;
-            margin: 2px;
-            font-size: 16px;
-        }
-    </style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f2f2f2;
+    }
+
+    h2 {
+        color: #333;
+    }
+
+    input {
+        width: 210px;
+        height: 40px;
+        font-size: 20px;
+        text-align: right;
+        padding-right: 8px;
+        border: 2px solid #ccc;
+        border-radius: 6px;
+        margin-bottom: 10px;
+    }
+
+    button {
+        width: 50px;
+        height: 45px;
+        margin: 4px;
+        font-size: 16px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        background-color: #e0e0e0;
+        transition: background-color 0.2s, transform 0.1s;
+    }
+
+    button:hover {
+        background-color: #d0d0d0;
+    }
+
+    button:active {
+        transform: scale(0.95);
+    }
+
+    button:last-child {
+        background-color: #ff9800;
+        color: white;
+    }
+
+    button:last-child:hover {
+        background-color: #e68900;
+    }
+</style>
+
 </head>
 <body>
 
