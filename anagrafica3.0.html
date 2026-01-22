@@ -1,28 +1,77 @@
 <!DOCTYPE html>
 <html>
+<head>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+  }
+
+  h1, h2 {
+    color: #333;
+  }
+
+  input {
+    padding: 5px;
+    margin: 5px 0;
+    width: 200px;
+  }
+
+  button {
+    padding: 6px 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #45a049;
+  }
+
+  table {
+    margin-top: 20px;
+    border-collapse: collapse;
+    background-color: white;
+  }
+
+  th, td {
+    padding: 8px 12px;
+    border: 1px solid #999;
+    text-align: center;
+  }
+
+  th {
+    background-color: #ddd;
+  }
+</style>
+</head>
+
 <body>
 
 <h1>Anagrafica 3.0</h1>
 <h2>Usando input, oggetti e array</h2>
 
-Nome: <input type="text" id="n"><br>
-Cognome: <input type="text" id="c"><br>
-Età: <input type="text" id="e"><br>
-Occhi: <input type="text" id="o"><br><br>
+Nome:<br>
+<input type="text" id="n"><br>
+Cognome:<br>
+<input type="text" id="c"><br>
+Età:<br>
+<input type="text" id="e"><br>
+Occhi:<br>
+<input type="text" id="o"><br><br>
 
 <button onclick="inserisci()">Inserisci</button>
 
-<br><br>
-
-<table border="1">
+<table>
   <tr>
     <th>Nome</th>
     <th>Cognome</th>
     <th>Età</th>
     <th>Colore occhi</th>
   </tr>
-  <tbody id="tabella">
-  </tbody>
+  <tbody id="tabella"></tbody>
 </table>
 
 <script>
