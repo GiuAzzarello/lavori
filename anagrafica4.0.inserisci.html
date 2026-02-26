@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>Inserisci Dati</title>
+</head>
+<body>
+<h2>Inserisci Dati</h2>
+<form id="datiForm">
+Nome: <input type="text" id="nome"><br><br>
+Cognome: <input type="text" id="cognome"><br><br>
+Età: <input type="number" id="eta"><br><br>
+Colore Occhi: <input type="text" id="coloreOcchi"><br><br>
+<button type="submit">Aggiungi</button>
+</form>
+<script>
+var elenco = JSON.parse(localStorage.getItem("elenco")) || [];
+document.getElementById("datiForm").addEventListener("submit", function(e) {
+e.preventDefault();
+var persona = {
+nome: document.getElementById("nome").value,
+cognome: document.getElementById("cognome").value,
+eta: document.getElementById("eta").value,
+coloreOcchi: document.getElementById("coloreOcchi").value
+};
+elenco.push(persona);
+localStorage.setItem("elenco", JSON.stringify(elenco));
+document.getElementById("datiForm").reset();
+});
+</script>
+</body>
+</html>
