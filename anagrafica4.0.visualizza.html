@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>Visualizza Dati</title>
+</head>
+<body>
+<h2>Elenco Persone</h2>
+<table border="1">
+<thead>
+<tr>
+<th>Nome</th>
+<th>Cognome</th>
+<th>Età</th>
+<th>Colore Occhi</th>
+</tr>
+</thead>
+<tbody id="tabella">
+</tbody>
+</table>
+<script>
+var elenco = JSON.parse(localStorage.getItem("elenco")) || [];
+var tbody = document.getElementById("tabella");
+for (var i = 0; i < elenco.length; i++) {
+var riga = document.createElement("tr");
+riga.innerHTML =
+"<td>" + elenco[i].nome + "</td>" +
+"<td>" + elenco[i].cognome + "</td>" +
+"<td>" + elenco[i].eta + "</td>" +
+"<td>" + elenco[i].coloreOcchi + "</td>";
+tbody.appendChild(riga);
+}
+</script>
+</body>
+</html>
