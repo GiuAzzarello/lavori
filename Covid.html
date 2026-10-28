@@ -1,0 +1,185 @@
+
+<!DOCTYPE HTML>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Andamento Nazionale COVID-19</title>
+
+    <style type="text/css">
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 20px;
+            background-color: #f1f5f9;
+            color: #1e293b;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        th, td {
+            border: 1px solid #bfdbfe;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #2563eb;
+            color: #ffffff;
+        }
+
+        tr.pari {
+            background-color: #e2e8f0;
+        }
+
+        #dati-container {
+            margin-top: 15px;
+            overflow-x: auto;
+        }
+
+        .errore {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Andamento Nazionale COVID-19</h2>
+
+    <div id="dati-container">dati in corso...</div>
+
+    <script type="text/javascript">
+
+        var url = "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-andamento-nazionale.json";
+
+        // Creazione della richiesta per ottenere i dati
+        var xhr = new XMLHttpRequest();
+
+        xhr.open("GET", url, true);
+
+        xhr.onreadystatechange = function() {
+
+            if (xhr.readyState === 4) {
+
+                var contenitore =
+                    document.getElementById("dati-container");
+
+                if (xhr.status === 200) {
+
+                    try {
+
+                        // Conversione della risposta in formato JSON
+                        var dati = JSON.parse(xhr.responseText);
+
+                        if (dati.length === 0) {
+                            contenitore.textContent =
+                                "Nessun dato disponibile.";
+                            return;
+                        }
+
+                        // Lettura del primo elemento per individuare le chiavi
+                        var obj = dati[0];
+
+                        // Calcolo del numero delle chiavi presenti
+                        var numeroChiavi = Object.keys(obj).length;
+
+                        // Memorizzazione delle chiavi in una collection
+                        var keys = Object.keys(obj);
+
+                        // Creazione degli elementi della tabella
+                        var tabella = document.createElement("table");
+                        var thead = document.createElement("thead");
+                        var tbody = document.createElement("tbody");
+
+                        // Preparazione delle intestazioni delle colonne
+                        var trIntestazione =
+                            document.createElement("tr");
+
+                        for (var i = 0; i < numeroChiavi; i++) {
+
+                            var th = document.createElement("th");
+
+                            th.textContent = keys[i];
+
+                            trIntestazione.appendChild(th);
+                        }
+
+                        thead.appendChild(trIntestazione);
+                        tabella.appendChild(thead);
+
+                        // Creazione delle righe con i dati ricevuti
+                        for (var i = 0; i < dati.length; i++) {
+
+                            var row = dati[i];
+                            var tr = document.createElement("tr");
+
+                            if (i % 2 === 0) {
+                                tr.className = "pari";
+                            }
+
+                            // Inserimento dei valori nelle rispettive celle
+                            for (var j = 0; j < numeroChiavi; j++) {
+
+                                var td = document.createElement("td");
+
+                                var chiave = keys[j];
+                                var valore = row[chiave];
+
+                                td.textContent =
+                                    valore !== undefined &&
+                                    valore !== null
+                                    ? valore
+                                    : "";
+
+                                tr.appendChild(td);
+                            }
+
+                            tbody.appendChild(tr);
+                        }
+
+                        tabella.appendChild(tbody);
+
+                        // Visualizzazione della tabella nella pagina
+                        contenitore.textContent = "";
+                        contenitore.appendChild(tabella);
+
+                    } catch (errore) {
+
+                        contenitore.textContent =
+                            "Errore durante l'elaborazione dei dati.";
+
+                        contenitore.className = "errore";
+                    }
+
+                } else {
+
+                    contenitore.textContent =
+                        "Errore HTTP: " + xhr.status;
+
+                    contenitore.className = "errore";
+                }
+            }
+        };
+
+        // Gestione degli eventuali errori di connessione
+        xhr.onerror = function() {
+
+            var contenitore =
+                document.getElementById("dati-container");
+
+            contenitore.textContent =
+                "Errore di rete durante il caricamento.";
+
+            contenitore.className = "errore";
+        };
+
+        // Invio della richiesta per avviare il caricamento
+        xhr.send();
+
+    </script>
+
+</body>
+</html>
