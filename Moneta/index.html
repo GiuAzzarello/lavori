@@ -1,0 +1,64 @@
+
+<html>
+<head>
+    <title>Conversione delle valute</title>
+</head>
+
+<body>
+
+    // Titolo della pagina
+    <h2>Convertitore di valute in euro</h2>
+
+    // Scelta della valuta
+    <p>Scegli la valuta da convertire:</p>
+
+    <select id="valuta">
+        <option value="USD">Dollaro USA</option>
+        <option value="JPY">Yen giapponese</option>
+        <option value="CZK">Corona ceca</option>
+        <option value="DKK">Corona danese</option>
+        <option value="GBP">Sterlina britannica</option>
+        <option value="HUF">Fiorino ungherese</option>
+        <option value="PLN">Zloty polacco</option>
+        <option value="RON">Leu rumeno</option>
+        <option value="SEK">Corona svedese</option>
+        <option value="CHF">Franco svizzero</option>
+        <option value="ISK">Corona islandese</option>
+        <option value="NOK">Corona norvegese</option>
+        <option value="TRY">Lira turca</option>
+        <option value="AUD">Dollaro australiano</option>
+        <option value="BRL">Real brasiliano</option>
+        <option value="CAD">Dollaro canadese</option>
+        <option value="CNY">Yuan cinese</option>
+        <option value="HKD">Dollaro di Hong Kong</option>
+        <option value="IDR">Rupia indonesiana</option>
+        <option value="ILS">Shekel israeliano</option>
+        <option value="INR">Rupia indiana</option>
+        <option value="KRW">Won sudcoreano</option>
+        <option value="MXN">Peso messicano</option>
+        <option value="MYR">Ringgit malese</option>
+        <option value="NZD">Dollaro neozelandese</option>
+        <option value="PHP">Peso filippino</option>
+        <option value="SGD">Dollaro di Singapore</option>
+        <option value="THB">Baht thailandese</option>
+        <option value="ZAR">Rand sudafricano</option>
+    </select>
+
+    // Inserimento della quantità
+    <p>Inserisci la quantità da convertire:</p>
+
+    <input type="text" id="quantita">
+
+    <br><br>
+
+    // Pulsante per avviare la conversione
+    <input type="button" value="Converti" onclick="converti()">
+
+    // Spazio dove appare il risultato
+    <h3 id="risultato"></h3>
+
+    // Collegamento al file JavaScript
+    <script src="script.js"></script>
+
+</body>
+</html>
