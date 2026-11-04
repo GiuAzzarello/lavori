@@ -1,0 +1,206 @@
+
+<!DOCTYPE HTML>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Costo dell'energia</title>
+
+    <style>
+        // Impostazioni della pagina
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 20px;
+        }
+
+        // Impostazioni della tabella
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        // Impostazioni delle celle
+        th, td {
+            border: 1px solid #e4a4fc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        // Colore delle intestazioni
+        th {
+            background-color: #c409f3;
+            color: #fff700;
+        }
+
+        // Colore delle righe
+        tr.pari {
+            background-color: #f9f9f9;
+        }
+
+        // Spazio del contenitore
+        #dati-container {
+            margin-top: 15px;
+            overflow-x: auto;
+        }
+
+        // Colore degli errori
+        .errore {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    // Titolo della pagina
+    <h2>Il costo dell'energia elettrica</h2>
+
+    // Spazi per le informazioni
+    <p id="descrizione"></p>
+    <p id="metadati"></p>
+
+    // Contenitore della tabella
+    <div id="dati-container">Caricamento dei dati...</div>
+
+    <script>
+        // Indirizzo del file JSON
+        var url = "dati.json";
+
+        // Crea la richiesta del file
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", url, true);
+
+        // Controlla quando la richiesta è terminata
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4) {
+
+                // Prende il contenitore dei dati
+                var contenitore =
+                    document.getElementById("dati-container");
+
+                // Controlla se il file è stato caricato
+                if (xhr.status === 200) {
+                    try {
+                        // Legge i dati del file JSON
+                        var dati = JSON.parse(xhr.responseText);
+
+                        // Mostra la descrizione
+                        document.getElementById("descrizione")
+                            .textContent = dati.descrizione || "";
+
+                        // Mostra le informazioni del file
+                        document.getElementById("metadati")
+                            .textContent =
+                            "Unità di misura: " +
+                            (dati.unita_di_misura || "") +
+                            " | Fonte: " +
+                            (dati.fonte_riferimento || "") +
+                            " | Aggiornamento: " +
+                            (dati.aggiornamento || "");
+
+                        // Prende i dati mensili
+                        var righe = dati.andamento_mensile;
+
+                        // Controlla se ci sono dati
+                        if (!Array.isArray(righe) || righe.length === 0) {
+                            contenitore.textContent =
+                                "Nessun dato disponibile.";
+                            return;
+                        }
+
+                        // Crea la tabella
+                        var tabella = document.createElement("table");
+                        var thead = document.createElement("thead");
+                        var tbody = document.createElement("tbody");
+
+                        // Crea la riga dei titoli
+                        var intestazione = document.createElement("tr");
+
+                        // Inserisce i titoli delle colonne
+                        var colonne = [
+                            "Anno",
+                            "Mese",
+                            "Costo medio PUN (EUR/MWh)"
+                        ];
+
+                        // Aggiunge i titoli alla tabella
+                        colonne.forEach(function(nome) {
+                            var th = document.createElement("th");
+                            th.textContent = nome;
+                            intestazione.appendChild(th);
+                        });
+
+                        // Aggiunge i titoli alla tabella
+                        thead.appendChild(intestazione);
+                        tabella.appendChild(thead);
+
+                        // Legge tutti i dati
+                        righe.forEach(function(row, i) {
+                            var tr = document.createElement("tr");
+
+                            // Colora le righe alternate
+                            if (i % 2 === 0) {
+                                tr.className = "pari";
+                            }
+
+                            // Inserisce i valori nelle celle
+                            [
+                                row.anno,
+                                row.mese,
+                                row.valore_medio_pun
+                            ].forEach(function(valore) {
+                                var td = document.createElement("td");
+
+                                // Inserisce il valore nella cella
+                                td.textContent =
+                                    valore !== undefined && valore !== null
+                                    ? valore
+                                    : "";
+
+                                tr.appendChild(td);
+                            });
+
+                            // Aggiunge la riga alla tabella
+                            tbody.appendChild(tr);
+                        });
+
+                        // Aggiunge le righe alla tabella
+                        tabella.appendChild(tbody);
+
+                        // Mostra la tabella nella pagina
+                        contenitore.textContent = "";
+                        contenitore.appendChild(tabella);
+
+                    } catch (errore) {
+                        // Mostra un messaggio di errore
+                        contenitore.textContent =
+                            "Errore durante la lettura dei dati.";
+                        contenitore.className = "errore";
+                    }
+                } else {
+                    // Mostra l'errore del caricamento
+                    contenitore.textContent =
+                        "Errore HTTP: " + xhr.status;
+                    contenitore.className = "errore";
+                }
+            }
+        };
+
+        // Controlla gli errori di rete
+        xhr.onerror = function() {
+            var contenitore =
+                document.getElementById("dati-container");
+
+            // Mostra il messaggio di errore
+            contenitore.textContent =
+                "Errore di rete durante il caricamento dei dati.";
+
+            contenitore.className = "errore";
+        };
+
+        // Avvia il caricamento del file
+        xhr.send();
+    </script>
+
+</body>
+</html>
