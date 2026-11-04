@@ -1,98 +1,129 @@
 
-<html>
+<!DOCTYPE html>
+<html lang="it">
 <head>
+    <meta charset="UTF-8">
     <title>Conversione delle valute</title>
+
+    <style>
+        /* Impostazioni della pagina */
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f1eee5;
+            margin: 0;
+            padding: 30px;
+        }
+
+        /* Riquadro principale */
+        .contenitore {
+            background-color: #ffffff;
+            width: 350px;
+            margin: 50px auto;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        /* Titolo */
+        h2 {
+            color: #386641;
+        }
+
+        /* Testi */
+        p {
+            color: #4a4a3f;
+        }
+
+        /* Menu e campo di testo */
+        select, input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            border: 1px solid #a3b18a;
+            border-radius: 6px;
+            box-sizing: border-box;
+            background-color: #fafaf5;
+        }
+
+        /* Pulsante */
+        input[type="button"] {
+            background-color: #588157;
+            color: white;
+            border: none;
+            padding: 11px 25px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        /* Colore del pulsante al passaggio del mouse */
+        input[type="button"]:hover {
+            background-color: #386641;
+        }
+
+        /* Risultato */
+        h3 {
+            color: #386641;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 
 <body>
 
-    <!-- Titolo della pagina -->
-    <h2>Convertitore di valute</h2>
+    <div class="contenitore">
 
-    <!-- Scelta della valuta di partenza -->
-    <p>Scegli la valuta da convertire:</p>
+        <!-- Titolo della pagina -->
+        <h2>Convertitore di valute</h2>
 
-    <select id="valuta">
-        <option value="EUR">Euro</option>
-        <option value="USD">Dollaro USA</option>
-        <option value="JPY">Yen giapponese</option>
-        <option value="CZK">Corona ceca</option>
-        <option value="DKK">Corona danese</option>
-        <option value="GBP">Sterlina britannica</option>
-        <option value="HUF">Fiorino ungherese</option>
-        <option value="PLN">Zloty polacco</option>
-        <option value="RON">Leu rumeno</option>
-        <option value="SEK">Corona svedese</option>
-        <option value="CHF">Franco svizzero</option>
-        <option value="ISK">Corona islandese</option>
-        <option value="NOK">Corona norvegese</option>
-        <option value="TRY">Lira turca</option>
-        <option value="AUD">Dollaro australiano</option>
-        <option value="BRL">Real brasiliano</option>
-        <option value="CAD">Dollaro canadese</option>
-        <option value="CNY">Yuan cinese</option>
-        <option value="HKD">Dollaro di Hong Kong</option>
-        <option value="IDR">Rupia indonesiana</option>
-        <option value="ILS">Shekel israeliano</option>
-        <option value="INR">Rupia indiana</option>
-        <option value="KRW">Won sudcoreano</option>
-        <option value="MXN">Peso messicano</option>
-        <option value="MYR">Ringgit malese</option>
-        <option value="NZD">Dollaro neozelandese</option>
-        <option value="PHP">Peso filippino</option>
-        <option value="SGD">Dollaro di Singapore</option>
-        <option value="THB">Baht thailandese</option>
-        <option value="ZAR">Rand sudafricano</option>
-    </select>
+        <!-- Scelta della valuta -->
+        <p>Scegli la valuta da convertire:</p>
 
-    <!-- Scelta della valuta di arrivo -->
-    <p>Scegli la valuta in cui convertire:</p>
+        <select id="valuta">
+            <option value="USD">Dollaro USA</option>
+            <option value="JPY">Yen giapponese</option>
+            <option value="CZK">Corona ceca</option>
+            <option value="DKK">Corona danese</option>
+            <option value="GBP">Sterlina britannica</option>
+            <option value="HUF">Fiorino ungherese</option>
+            <option value="PLN">Zloty polacco</option>
+            <option value="RON">Leu rumeno</option>
+            <option value="SEK">Corona svedese</option>
+            <option value="CHF">Franco svizzero</option>
+            <option value="ISK">Corona islandese</option>
+            <option value="NOK">Corona norvegese</option>
+            <option value="TRY">Lira turca</option>
+            <option value="AUD">Dollaro australiano</option>
+            <option value="BRL">Real brasiliano</option>
+            <option value="CAD">Dollaro canadese</option>
+            <option value="CNY">Yuan cinese</option>
+            <option value="HKD">Dollaro di Hong Kong</option>
+            <option value="IDR">Rupia indonesiana</option>
+            <option value="ILS">Shekel israeliano</option>
+            <option value="INR">Rupia indiana</option>
+            <option value="KRW">Won sudcoreano</option>
+            <option value="MXN">Peso messicano</option>
+            <option value="MYR">Ringgit malese</option>
+            <option value="NZD">Dollaro neozelandese</option>
+            <option value="PHP">Peso filippino</option>
+            <option value="SGD">Dollaro di Singapore</option>
+            <option value="THB">Baht thailandese</option>
+            <option value="ZAR">Rand sudafricano</option>
+        </select>
 
-    <select id="valuta_arrivo">
-        <option value="EUR">Euro</option>
-        <option value="USD">Dollaro USA</option>
-        <option value="JPY">Yen giapponese</option>
-        <option value="CZK">Corona ceca</option>
-        <option value="DKK">Corona danese</option>
-        <option value="GBP">Sterlina britannica</option>
-        <option value="HUF">Fiorino ungherese</option>
-        <option value="PLN">Zloty polacco</option>
-        <option value="RON">Leu rumeno</option>
-        <option value="SEK">Corona svedese</option>
-        <option value="CHF">Franco svizzero</option>
-        <option value="ISK">Corona islandese</option>
-        <option value="NOK">Corona norvegese</option>
-        <option value="TRY">Lira turca</option>
-        <option value="AUD">Dollaro australiano</option>
-        <option value="BRL">Real brasiliano</option>
-        <option value="CAD">Dollaro canadese</option>
-        <option value="CNY">Yuan cinese</option>
-        <option value="HKD">Dollaro di Hong Kong</option>
-        <option value="IDR">Rupia indonesiana</option>
-        <option value="ILS">Shekel israeliano</option>
-        <option value="INR">Rupia indiana</option>
-        <option value="KRW">Won sudcoreano</option>
-        <option value="MXN">Peso messicano</option>
-        <option value="MYR">Ringgit malese</option>
-        <option value="NZD">Dollaro neozelandese</option>
-        <option value="PHP">Peso filippino</option>
-        <option value="SGD">Dollaro di Singapore</option>
-        <option value="THB">Baht thailandese</option>
-        <option value="ZAR">Rand sudafricano</option>
-    </select>
+        <!-- Inserimento della quantità -->
+        <p>Inserisci la quantità da convertire:</p>
 
-    <!-- Inserimento della quantità -->
-    <p>Inserisci la quantità da convertire:</p>
+        <input type="text" id="quantita">
 
-    <input type="text" id="quantita">
+        <br><br>
 
-    <br><br>
+        <!-- Pulsante per la conversione -->
+        <input type="button" value="Converti" onclick="converti()">
 
-    <!-- Pulsante per la conversione -->
-    <input type="button" value="Converti" onclick="converti()">
+        <!-- Risultato della conversione -->
+        <h3 id="risultato"></h3>
 
-    <!-- Risultato della conversione -->
-    <h3 id="risultato"></h3>
+    </div>
 
     <!-- Collegamento al file JavaScript -->
     <script src="script.js"></script>
