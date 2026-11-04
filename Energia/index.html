@@ -6,61 +6,87 @@
     <title>Costo dell'energia</title>
 
     <style>
-        // Impostazioni della pagina
+        /* Impostazioni della pagina */
         body {
             font-family: Arial, Helvetica, sans-serif;
-            margin: 20px;
+            background-color: #e0f2f1;
+            margin: 0;
+            padding: 30px;
         }
 
-        // Impostazioni della tabella
+        /* Riquadro principale */
+        .contenitore {
+            background-color: white;
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        /* Titolo della pagina */
+        h2 {
+            text-align: center;
+            color: #00695c;
+        }
+
+        /* Informazioni della pagina */
+        p {
+            color: #37474f;
+        }
+
+        /* Contenitore della tabella */
+        #dati-container {
+            margin-top: 15px;
+            overflow-x: auto;
+        }
+
+        /* Impostazioni della tabella */
         table {
             border-collapse: collapse;
             width: 100%;
             margin-top: 15px;
         }
 
-        // Impostazioni delle celle
+        /* Impostazioni delle celle */
         th, td {
-            border: 1px solid #e4a4fc;
-            padding: 8px;
+            border: 1px solid #80cbc4;
+            padding: 10px;
             text-align: left;
         }
 
-        // Colore delle intestazioni
+        /* Colore delle intestazioni */
         th {
-            background-color: #c409f3;
-            color: #fff700;
+            background-color: #00796b;
+            color: white;
         }
 
-        // Colore delle righe
+        /* Colore delle righe alternate */
         tr.pari {
-            background-color: #f9f9f9;
+            background-color: #e0f2f1;
         }
 
-        // Spazio del contenitore
-        #dati-container {
-            margin-top: 15px;
-            overflow-x: auto;
-        }
-
-        // Colore degli errori
+        /* Colore degli errori */
         .errore {
-            color: red;
+            color: #d32f2f;
         }
     </style>
 </head>
 
 <body>
 
-    // Titolo della pagina
-    <h2>Il costo dell'energia elettrica</h2>
+    <div class="contenitore">
 
-    // Spazi per le informazioni
-    <p id="descrizione"></p>
-    <p id="metadati"></p>
+        <!-- Titolo della pagina -->
+        <h2>Il costo dell'energia elettrica</h2>
 
-    // Contenitore della tabella
-    <div id="dati-container">Caricamento dei dati...</div>
+        <!-- Spazi per le informazioni -->
+        <p id="descrizione"></p>
+        <p id="metadati"></p>
+
+        <!-- Contenitore della tabella -->
+        <div id="dati-container">Caricamento dei dati...</div>
+
+    </div>
 
     <script>
         // Indirizzo del file JSON
@@ -204,3 +230,4 @@
 
 </body>
 </html>
+
