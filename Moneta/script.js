@@ -1,6 +1,10 @@
+
 var cambi = new XMLHttpRequest();
 
 var tassi = {};
+
+// Il valore dell'euro è 1
+tassi["EUR"] = 1;
 
 cambi.open("GET", "eurofxref-daily.xml", true);
 
@@ -18,7 +22,7 @@ cambi.onreadystatechange = function() {
             var cambio = valute[i].getAttribute("rate");
 
             if (valuta != null) {
-                tassi[valuta] = cambio;
+                tassi[valuta] = parseFloat(cambio);
             }
         }
     }
@@ -29,14 +33,28 @@ cambi.send();
 
 function converti() {
 
-    var valuta = document.getElementById("valuta").value;
+    var valuta = document.getElementById("valuta_arrivo").value;
 
-    var quantita = document.getElementById("quantita").value;
+    var quantita = parseFloat(
+        document.getElementById("quantita").value.replace(",", ".")
+    );
 
     var cambio = tassi[valuta];
 
-    var euro = quantita / cambio;
+    if (isNaN(quantita) || quantita <= 0) {
+        document.getElementById("risultato").innerHTML =
+            "Inserisci una quantità valida.";
+        return;
+    }
+
+    if (cambio === undefined) {
+        document.getElementById("risultato").innerHTML =
+            "Cambio non disponibile.";
+        return;
+    }
+
+    var risultato = quantita * cambio;
 
     document.getElementById("risultato").innerHTML =
-        "Risultato: " + euro.toFixed(2) + " Euro";
+        "Risultato: " + risultato.toFixed(2) + " " + valuta;
 }
